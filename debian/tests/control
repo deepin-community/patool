@@ -1,0 +1,3 @@
+Test-Command: patool formats
+Depends: @
+Restrictions: allow-stderr
