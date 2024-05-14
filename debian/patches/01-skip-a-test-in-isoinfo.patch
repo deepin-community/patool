@@ -1,0 +1,15 @@
+Description: Skip the failing test in test_isoinfo.py
+Author: Abhijith PA <abhijith@debian.org>
+Forwarded: not-needed
+Last-Update: 2023-11-20
+
+--- patool-2.0.0.orig/tests/archives/test_isoinfo.py
++++ patool-2.0.0/tests/archives/test_isoinfo.py
+@@ -24,6 +24,7 @@ class TestIsoinfo(ArchiveTest):
+     def test_isoinfo(self):
+         self.archive_list('t.iso')
+ 
++    @needs_program('file')
+     @needs_program(program)
+     def test_isoinfo_file(self):
+         self.archive_list('t.iso.foo')

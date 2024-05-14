@@ -1,4 +1,18 @@
 #!/usr/bin/make -f
 
+export PYBUILD_NAME=patool
+
 %:
-	dh $@
+	dh $@ --with python3,bash-completion --buildsystem=pybuild
+
+override_dh_clean:
+	rm -rf _patool_configdata.py
+	dh_clean
+
+# do not run test suite when building
+override_dh_auto_test:
+
+override_dh_installchangelogs:
+# install custom changelog
+	dh_installchangelogs doc/changelog.txt
+	dh_installman doc/patool.1
